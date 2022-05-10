@@ -1,0 +1,8 @@
+#archetype
+mvn -B archetype:generate -DarchetypeGroupId=software.amazon.awssdk -DarchetypeArtifactId=archetype-lambda -Dservice=dynamodb -Dregion=AP-SOUTH-1 -DgroupId=com.project.aws -DartifactId=lambda3
+
+#lambda creation
+aws lambda create-function --function-name Lambda3 --zip-file fileb://lambda3.jar --handler com.project.aws.App::handleRequest --runtime java8 --role arn:aws:iam::476162773464:role/UniversalLambdaExecutionRole --timeout 90 --memory-size 512
+
+#lambda update
+aws lambda update-function-code --function-name Lambda2 --zip-file fileb://lambda2.jar
